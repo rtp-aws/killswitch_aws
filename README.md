@@ -41,6 +41,8 @@ Examined AWS layers and nothing provided by AWS seemed to apply.  It listed
 * lambda insights extension
 
 
+## blocking api gateway usage
+
 In the lambda function, for the permissions, It has
 the Resource Summary and the Role document.  By default,
 it has SNS as a result of adding a trigger.  To add API Gateway
@@ -55,3 +57,12 @@ Managed policy AWSLambdaBasicExecutionRole-fcc0f99c-be3b-4774-9914-b4f8df4aa91a,
 Modify the role in IAM -> Policies and add Manage API Gateway.  In this case I gave it full permission to all resources in API Gateway.  I figure if any cost is above threshold, throttle all api's rather than apis on an individual basis.
 
 
+## blocking S3 public usage
+
+https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html
+
+## blocking rekognition usage
+
+## blocking elastic beanstalk
+
+https://aws.amazon.com/blogs/security/protect-public-clients-for-amazon-cognito-by-using-an-amazon-cloudfront-proxy/
