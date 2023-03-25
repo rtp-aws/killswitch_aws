@@ -1272,3 +1272,518 @@ START RequestId: cc3fd46e-48ac-4a52-9dc4-68ce85795fc7 Version: $LATEST
 }
 END RequestId: cc3fd46e-48ac-4a52-9dc4-68ce85795fc7
 ```
+
+
+#### as an experiment
+
+Removed two of the delays.  Kept only the one after the modify and before the get operation.  Ran one time and this was the result.
+
+```
+Test Event Name
+jfdeven
+
+Response
+{
+  "errorType": "OperationAborted",
+  "errorMessage": "A conflicting conditional operation is currently in progress against this resource. Please try again.",
+  "trace": [
+    "OperationAborted: A conflicting conditional operation is currently in progress against this resource. Please try again.",
+    "    at Request.extractError (/var/runtime/node_modules/aws-sdk/lib/services/s3.js:710:35)",
+    "    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:106:20)",
+    "    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:78:10)",
+    "    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/request.js:686:14)",
+    "    at Request.transition (/var/runtime/node_modules/aws-sdk/lib/request.js:22:10)",
+    "    at AcceptorStateMachine.runTo (/var/runtime/node_modules/aws-sdk/lib/state_machine.js:14:12)",
+    "    at /var/runtime/node_modules/aws-sdk/lib/state_machine.js:26:10",
+    "    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:38:9)",
+    "    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:688:12)",
+    "    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:116:18)"
+  ]
+}
+
+Function Logs
+currently in progress against this resource. Please try again.
+    at Request.extractError (/var/runtime/node_modules/aws-sdk/lib/services/s3.js:710:35)
+    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:106:20)
+    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:78:10)
+    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/request.js:686:14)
+    at Request.transition (/var/runtime/node_modules/aws-sdk/lib/request.js:22:10)
+    at AcceptorStateMachine.runTo (/var/runtime/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /var/runtime/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:38:9)
+    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:688:12)
+    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:116:18) {
+  code: 'OperationAborted',
+  region: null,
+  time: 2023-03-25T14:02:54.026Z,
+  requestId: 'SMTEYZXZ343FE28D',
+  extendedRequestId: 'IvV8tBFwKyijpI2qa59kTYLGOGhdg+mglouEFhSkrpdqFW509ZLUduua/yoPEONCejTXkYRQ7bY=',
+  cfId: undefined,
+  statusCode: 409,
+  retryable: false,
+  retryDelay: 24.837675221917642
+} OperationAborted: A conflicting conditional operation is currently in progress against this resource. Please try again.
+    at Request.extractError (/var/runtime/node_modules/aws-sdk/lib/services/s3.js:710:35)
+    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:106:20)
+    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:78:10)
+    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/request.js:686:14)
+    at Request.transition (/var/runtime/node_modules/aws-sdk/lib/request.js:22:10)
+    at AcceptorStateMachine.runTo (/var/runtime/node_modules/aws-sdk/lib/state_machine.js:14:12)
+    at /var/runtime/node_modules/aws-sdk/lib/state_machine.js:26:10
+    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:38:9)
+    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:688:12)
+    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:116:18)
+2023-03-25T14:02:54.065Z	13594562-8a1b-4895-aae6-be4e9ee86da0	ERROR	Invoke Error 	{"errorType":"OperationAborted","errorMessage":"A conflicting conditional operation is currently in progress against this resource. Please try again.","code":"OperationAborted","message":"A conflicting conditional operation is currently in progress against this resource. Please try again.","region":null,"time":"2023-03-25T14:02:54.026Z","requestId":"SMTEYZXZ343FE28D","extendedRequestId":"IvV8tBFwKyijpI2qa59kTYLGOGhdg+mglouEFhSkrpdqFW509ZLUduua/yoPEONCejTXkYRQ7bY=","statusCode":409,"retryable":false,"retryDelay":24.837675221917642,"stack":["OperationAborted: A conflicting conditional operation is currently in progress against this resource. Please try again.","    at Request.extractError (/var/runtime/node_modules/aws-sdk/lib/services/s3.js:710:35)","    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:106:20)","    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:78:10)","    at Request.emit (/var/runtime/node_modules/aws-sdk/lib/request.js:686:14)","    at Request.transition (/var/runtime/node_modules/aws-sdk/lib/request.js:22:10)","    at AcceptorStateMachine.runTo (/var/runtime/node_modules/aws-sdk/lib/state_machine.js:14:12)","    at /var/runtime/node_modules/aws-sdk/lib/state_machine.js:26:10","    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:38:9)","    at Request.<anonymous> (/var/runtime/node_modules/aws-sdk/lib/request.js:688:12)","    at Request.callListeners (/var/runtime/node_modules/aws-sdk/lib/sequential_executor.js:116:18)"]}
+END RequestId: 13594562-8a1b-4895-aae6-be4e9ee86da0
+REPORT RequestId: 13594562-8a1b-4895-aae6-be4e9ee86da0	Duration: 1525.83 ms	Billed Duration: 1526 ms	Memory Size: 128 MB	Max Memory Used: 79 MB	Init Duration: 427.56 ms
+
+Request ID
+13594562-8a1b-4895-aae6-be4e9ee86da0
+```
+
+Adding back the first delay, you get the the first two calls to run, but you don't get the last result.
+
+```
+Test Event Name
+jfdeven
+
+Response
+"2023/03/25/[$LATEST]0b1c8b23e92e4a55b9796e79b40a96e0"
+
+Function Logs
+START RequestId: 2a349e73-b79f-4145-96e0-a98d34419e55 Version: $LATEST
+2023-03-25T14:04:45.589Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	=== JFD exports.handler() =====:
+2023-03-25T14:04:45.589Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	getS3BucketPolicy() ==== enter
+2023-03-25T14:04:45.737Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	no error
+2023-03-25T14:04:45.737Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	{
+  PublicAccessBlockConfiguration: {
+    BlockPublicAcls: false,
+    IgnorePublicAcls: false,
+    BlockPublicPolicy: false,
+    RestrictPublicBuckets: false
+  }
+}
+2023-03-25T14:04:45.815Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	no error, this is the bucket policy
+2023-03-25T14:04:45.815Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	{
+  Policy: '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::rtp-aws.org/*"}]}'
+}
+2023-03-25T14:04:45.815Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	getS3BucketPolicy() ==== exit
+2023-03-25T14:04:45.835Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	no error, this is the bucket policy
+2023-03-25T14:04:45.835Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	{
+  Policy: '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::rtp-aws.org/*"}]}'
+}
+2023-03-25T14:04:46.316Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	modifyS3PublicAccessBlock() ==== enter
+2023-03-25T14:04:46.557Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	no error
+2023-03-25T14:04:46.557Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	{}
+2023-03-25T14:04:46.557Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	modifyS3PublicAccessBlock() ==== exit
+2023-03-25T14:04:46.642Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	no error
+2023-03-25T14:04:46.642Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	{}
+2023-03-25T14:04:47.057Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	getS3PublicAccessBlock() ==== enter
+2023-03-25T14:04:47.060Z	2a349e73-b79f-4145-96e0-a98d34419e55	INFO	getS3PublicAccessBlock() ==== exit
+END RequestId: 2a349e73-b79f-4145-96e0-a98d34419e55
+REPORT RequestId: 2a349e73-b79f-4145-96e0-a98d34419e55	Duration: 1486.52 ms	Billed Duration: 1487 ms	Memory Size: 128 MB	Max Memory Used: 79 MB
+
+Request ID
+2a349e73-b79f-4145-96e0-a98d34419e55
+
+```
+
+
+Removed all the .promise() added all three delays.  This is the result
+
+```
+Response
+"2023/03/25/[$LATEST]dc5e37c7899a42fe98b0264761f71f7f"
+
+Function Logs
+START RequestId: 7ecf3560-f88e-41a8-8dbd-c4eb11e4045b Version: $LATEST
+2023-03-25T14:08:49.604Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	=== JFD exports.handler() =====:
+2023-03-25T14:08:49.605Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	getS3BucketPolicy() ==== enter
+2023-03-25T14:08:50.759Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	no error, this is the bucket policy
+2023-03-25T14:08:50.761Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	{
+  Policy: '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::rtp-aws.org/*"}]}'
+}
+2023-03-25T14:08:50.762Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	getS3BucketPolicy() ==== exit
+2023-03-25T14:08:50.819Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	no error, this is the bucket policy
+2023-03-25T14:08:50.819Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	{
+  Policy: '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::rtp-aws.org/*"}]}'
+}
+2023-03-25T14:08:51.319Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	modifyS3PublicAccessBlock() ==== enter
+2023-03-25T14:08:51.361Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	modifyS3PublicAccessBlock() ==== exit
+2023-03-25T14:08:51.572Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	no error
+2023-03-25T14:08:51.573Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	{}
+2023-03-25T14:08:51.862Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	getS3PublicAccessBlock() ==== enter
+2023-03-25T14:08:51.864Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	getS3PublicAccessBlock() ==== exit
+2023-03-25T14:08:51.998Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	no error
+2023-03-25T14:08:51.999Z	7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	INFO	{
+  PublicAccessBlockConfiguration: {
+    BlockPublicAcls: false,
+    IgnorePublicAcls: false,
+    BlockPublicPolicy: false,
+    RestrictPublicBuckets: false
+  }
+}
+END RequestId: 7ecf3560-f88e-41a8-8dbd-c4eb11e4045b
+REPORT RequestId: 7ecf3560-f88e-41a8-8dbd-c4eb11e4045b	Duration: 2763.69 ms	Billed Duration: 2764 ms	Memory Size: 128 MB	Max Memory Used: 79 MB	Init Duration: 430.52 ms
+
+Request ID
+7ecf3560-f88e-41a8-8dbd-c4eb11e4045b
+```
+
+
+### final code that works
+
+```
+// other code used const
+const AWS = require('aws-sdk')
+
+
+function myDebug(flag, ...args) {
+
+    if (flag) {
+        console.log(...args)
+    }
+
+}
+
+function handleResult(err, data) {
+
+   myDebug(false, "handleResult() === enter")
+
+    if (err) {
+        // an error occurred
+        myDebug(true, "an error occured")
+        myDebug(true, err, err.stack);
+    } else {
+        // successful response
+        myDebug(true, "no error, this is the bucket policy")
+        myDebug(true, data);
+    }
+
+   myDebug(false, "handleResult() === exit")
+
+}
+
+
+// The permissions are two level per se.
+//
+// Top level is "Block Public Access"
+//
+// Bottom level is "Bucket Policy"
+//
+// "getS3BucketPolicy" shows the result of the bottom level bucket policy.
+// however, it does not matter if this setting is for read access to public
+// if the top level is specifed.
+//
+//
+// When bucket is public or private.  The policy is the same.
+//{
+//  Policy: '{"Version":"2012-10-17",
+//            "Statement":[
+//                 {"Sid":"PublicReadGetObject",
+//                  "Effect":"Allow",
+//                  "Principal":"*",
+//                  "Action":"s3:GetObject",
+//                  "Resource":"arn:aws:s3:::rtp-aws.org/*"
+//                 }
+//             ]
+//           }'
+//}
+
+const getS3BucketPolicy = async(bucket) => {
+
+    myDebug(true, "getS3BucketPolicy() ==== enter ")
+
+
+    const s3 = new AWS.S3()
+
+    var params = {
+      Bucket: bucket
+    };
+
+    await s3.getBucketPolicy(params, handleResult).promise()
+
+
+
+    myDebug(true, "getS3BucketPolicy() ==== exit ")
+
+}
+
+
+//
+// This routine is for access to a specific aws user.
+//
+// getBucketAcl
+//
+// When bucket is publick,
+//
+// {
+//  Owner: {
+//    DisplayName: 'some display name',
+//    ID: 'someid'
+//  },
+//  Grants: [ { Grantee: [Object], Permission: 'FULL_CONTROL' } ]
+//}
+//
+//
+// This is not what we want, because it is acl for a registered aws account id
+const getS3BucketACL = async(bucket) => {
+    myDebug(true, "getS3BucketACL() ==== enter ")
+
+    const s3 = new AWS.S3()
+
+    var params = {
+        Bucket: bucket,
+        ExpectedBucketOwner: '123456789012'  // This can't be * for all users
+    };
+
+    // removed trailing .promise()
+    await s3.getBucketAcl(params, function(err, data) {
+      if (err) myDebug(true, err, err.stack); // an error occurred
+      else     myDebug(true, data);           // successful response
+    })
+
+    myDebug(true, "getS3BucketACL() ==== exit ")
+
+}
+
+
+
+//
+//  When website is blocked for public reads.
+//
+// {
+//   PublicAccessBlockConfiguration: {
+//     BlockPublicAcls: true,
+//     IgnorePublicAcls: true,
+//     BlockPublicPolicy: true,
+//     RestrictPublicBuckets: true
+//   }
+// }
+//
+// When website is not blocked for public reads
+//
+// {
+//  PublicAccessBlockConfiguration: {
+//    BlockPublicAcls: false,
+//    IgnorePublicAcls: false,
+//    BlockPublicPolicy: false,
+//    RestrictPublicBuckets: false
+//  }
+// }
+//
+
+
+const getS3PublicAccessBlock = async(bucket) => {
+
+    myDebug(true, "getS3PublicAccessBlock() ==== enter ")
+
+    const s3 = new AWS.S3()
+
+    var params = {
+      Bucket: bucket /* required */
+      // This routine takes an optional parameter corresponding to an ExpectedBucketOwner
+    };
+
+    // removed the trailing .promise
+    await s3.getPublicAccessBlock(params, function(err, data) {
+      if (err) {
+          myDebug(true, "an error occured"); // an error occurred
+          myDebug(true, err, err.stack); // an error occurred
+      } else {
+          myDebug(true, "no error"); // an error occurred
+          myDebug(true, data);           // successful response
+      }
+    })
+
+    myDebug(true, "getS3PublicAccessBlock() ==== exit ")
+}
+
+
+const modifyS3PublicAccessBlock = async(bucket, block_flag) => {
+
+    myDebug(true, "modifyS3PublicAccessBlock() ==== enter ")
+
+    const s3 = new AWS.S3()
+
+    var params = {
+      Bucket: bucket, /* required */
+      PublicAccessBlockConfiguration: { /* required */
+        BlockPublicAcls: block_flag,
+        BlockPublicPolicy: block_flag,
+        IgnorePublicAcls: block_flag,
+        RestrictPublicBuckets: block_flag
+      },
+      // For requests made using the Amazon Web Services. For Amazon Web Services SDKs,
+      // this field is calculated automatically.
+      //
+      //ChecksumAlgorithm: CRC32 | CRC32C | SHA1 | SHA256,
+      //ContentMD5: 'STRING_VALUE',
+      //ExpectedBucketOwner: 'STRING_VALUE'
+    };
+
+    // removed the .promise()
+    await s3.putPublicAccessBlock(params, function(err, data) {
+      if (err) {
+          myDebug(true, "an error occured"); // an error occurred
+          myDebug(true, err, err.stack); // an error occurred
+      } else {
+          myDebug(true, "no error"); // an error occurred
+          myDebug(true, data);           // successful response
+      }
+    })
+
+    myDebug(true, "modifyS3PublicAccessBlock() ==== exit ")
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// get bucket policy status
+// This is not what we want to do, because its for a AWS id
+const getS3BucketPolicyStatus = async(bucket) => {
+    myDebug(true, "getS3BucketPolicyStatus() ==== enter ")
+
+    const s3 = new AWS.S3()
+
+    var params = {
+        Bucket: bucket,
+        ExpectedBucketOwner: '123456789012'  // This can't be * for all users
+    };
+
+    // removed the trailing .promise
+    await s3.getBucketPolicyStatus(params, function(err, data) {
+      if (err) myDebug(true, err, err.stack); // an error occurred
+      else     myDebug(true, data);           // successful response
+    })
+
+    myDebug(true, "getS3BucketPolicyStatus() ==== exit ")
+
+}
+
+
+
+// Create a delay routine
+const delay = (delayInms) => {
+  return new Promise(resolve => setTimeout(resolve, delayInms));
+}
+
+
+
+
+
+
+exports.handler = async (event, context) => {
+
+    myDebug(true, '=== JFD exports.handler() =====:');
+
+    myDebug(false, '=== JFD the received event: ', JSON.stringify(event, null, 2));
+    myDebug(false, '=== JFD the received context: ', JSON.stringify(context, null, 2));
+
+
+    // This is the same regardless of public access setting
+    await getS3BucketPolicy("rtp-aws.org")
+
+
+    // Use the delay function to wait 1/2 second
+    let delayres = await delay(500);
+
+
+    // This is for a specific aws id
+    //await getS3BucketACL("rtp-aws.org")
+    // This one get the top level public access status
+//    await getS3PublicAccessBlock("rtp-aws.org")
+
+    // This will block all public access
+//    await modifyS3PublicAccessBlock("rtp-aws.org", true)
+
+    // This will enable all public access
+    await modifyS3PublicAccessBlock("rtp-aws.org", false)
+
+    // Use the delay function to wait 1/2 second
+    await delay(500);
+
+
+
+    // This one get the top level public access status
+    await getS3PublicAccessBlock("rtp-aws.org")
+
+
+    // Use the delay function to wait 1/2 second
+    await delay(500);
+
+
+
+    // Not going to use this one, but keep for reference.
+    //await getS3BucketPolicyStatus("rtp-aws.org")
+    //await setS3BucketPolicy("rtp-aws.org")
+    // set block_flag = true, to block public access
+
+
+    return context.logStreamName
+};
+
+
+```
+
+Ran this code three times
+each time this was the result
+
+```
+Test Event Name
+jfdeven
+
+Response
+"2023/03/25/[$LATEST]dc5e37c7899a42fe98b0264761f71f7f"
+
+Function Logs
+START RequestId: f0b4adee-0f50-4f52-a425-64d429c8e1db Version: $LATEST
+2023-03-25T14:10:37.956Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	=== JFD exports.handler() =====:
+2023-03-25T14:10:37.956Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	getS3BucketPolicy() ==== enter
+2023-03-25T14:10:38.059Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	no error, this is the bucket policy
+2023-03-25T14:10:38.059Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	{
+  Policy: '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::rtp-aws.org/*"}]}'
+}
+2023-03-25T14:10:38.059Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	getS3BucketPolicy() ==== exit
+2023-03-25T14:10:38.060Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	no error, this is the bucket policy
+2023-03-25T14:10:38.061Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	{
+  Policy: '{"Version":"2012-10-17","Statement":[{"Sid":"PublicReadGetObject","Effect":"Allow","Principal":"*","Action":"s3:GetObject","Resource":"arn:aws:s3:::rtp-aws.org/*"}]}'
+}
+2023-03-25T14:10:38.561Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	modifyS3PublicAccessBlock() ==== enter
+2023-03-25T14:10:38.580Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	modifyS3PublicAccessBlock() ==== exit
+2023-03-25T14:10:38.734Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	no error
+2023-03-25T14:10:38.734Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	{}
+2023-03-25T14:10:39.081Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	getS3PublicAccessBlock() ==== enter
+2023-03-25T14:10:39.083Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	getS3PublicAccessBlock() ==== exit
+2023-03-25T14:10:39.168Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	no error
+2023-03-25T14:10:39.168Z	f0b4adee-0f50-4f52-a425-64d429c8e1db	INFO	{
+  PublicAccessBlockConfiguration: {
+    BlockPublicAcls: false,
+    IgnorePublicAcls: false,
+    BlockPublicPolicy: false,
+    RestrictPublicBuckets: false
+  }
+}
+END RequestId: f0b4adee-0f50-4f52-a425-64d429c8e1db
+REPORT RequestId: f0b4adee-0f50-4f52-a425-64d429c8e1db	Duration: 1628.68 ms	Billed Duration: 1629 ms	Memory Size: 128 MB	Max Memory Used: 82 MB
+```
+
+
