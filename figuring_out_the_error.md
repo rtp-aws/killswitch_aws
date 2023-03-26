@@ -1,3 +1,7 @@
+# Figuring out an error
+
+At one time I was trying to figure out why the aws requests were occastionally failing.  This is the log of the results and how the issue was resolved.
+
 Using this code
 
 ## code fragment 1
