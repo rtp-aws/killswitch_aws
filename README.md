@@ -18,7 +18,7 @@ to throttle are:
 * elastik beanstalk
 * etc
 
-TODO: add the image from the jamboard
+![img](imgs/aws-killswitch.png)
 
 
 # urls of interest
