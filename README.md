@@ -29,5 +29,10 @@ to throttle are:
 * https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
 * https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
 
+# notes on code
+
+* lambda.js - the code used for the lambda
+* killswitch_topic_stub - the event which supposedly looks like the SNS event
+* enable_topic_stub - the event which will enable services
 
 
