@@ -27,7 +27,9 @@ to throttle are:
 * https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#getBucketPolicy-property
 * https://docs.aws.amazon.com/lambda/latest/dg/nodejs-context.html
 * https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
-* https://docs.aws.amazon.com/lambda/latest/dg/nodejs-handler.html
+* [AWS SDK v2](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/top-level-namespace.html)
+* [AWS SDK v3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/index.html)
+
 
 # notes on code
 
